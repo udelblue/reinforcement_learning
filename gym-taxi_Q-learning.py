@@ -11,19 +11,20 @@ def print_frames(frames):
     for i, frame in enumerate(frames):
         clear_output(wait=True)
         print(frame['frame'].getvalue())
-        print(f"Timestep: {i + 1}")
-        print(f"State: {frame['state']}")
-        print(f"Action: {frame['action']}")
-        print(f"Reward: {frame['reward']}")
+        print("Timestep: {}".format(i + 1))
+        print("State: {}".format(frame['state']))
+        print("Action: {}".format(frame['action']))
+        print("Reward: {}".format(frame['reward']))
         sleep(.1)
+
 
 
 env = gym.make('Taxi-v2')
 env.reset()  # reset environment to a new, random state
 env.render()
 
-print(f"Action Space {env.action_space}")
-print(f"State Space {env.observation_space}")
+print("Action Space ".format(env.action_space))
+print("State Space ".format(env.observation_space))
 
 q_table = np.zeros([env.observation_space.n, env.action_space.n])
 
@@ -70,7 +71,7 @@ for i in range(1, 100001):
 
     if i % 100 == 0:
         clear_output(wait=True)
-        print(f"Episode: {i}")
+        print("Episode: {}".format(i))
 
 print("Training finished.\n")
 
@@ -108,7 +109,7 @@ for _ in range(episodes):
     total_penalties += penalties
     total_epochs += epochs
 # print_frames(frames)     uncomment to printout all frames to console
-print(f"Results after {episodes} episodes:")
-print(f"Average timesteps per episode: {total_epochs / episodes}")
-print(f"Average penalties per episode: {total_penalties / episodes}")
+print("Results after {} episodes:" .format(episodes))
+print("Average timesteps per episode: {}".format(total_epochs / episodes))
+print("Average penalties per episode: {}".format(total_penalties / episodes))
 '''end eval agent  '''
